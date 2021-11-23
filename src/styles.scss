@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/** Imports **/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap");
+
+/** Vars **/
+$talentfy-color: #3b2653;
+$talentfy-complementary-color: #ffad3c;
+$heading-font: "Roboto Slab", serif;
+$body-font: "Roboto", sans-serif;
+
+/** Common Styles **/
+body {
+  font-family: $body-font;
+}
+.navbar a {
+  color: white;
+}
+
+.bg-talentfy {
+  background-color: $talentfy-color;
+}
+
+/** Components **/
+.navbar-talentfy {
+  background-color: $talentfy-color;
+}
+
+.card-header-talentfy {
+  background-color: $talentfy-complementary-color;
+  color: $talentfy-color;
+  font-weight: 800;
+  font-family: $heading-font;
+}
