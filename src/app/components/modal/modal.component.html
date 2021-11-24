@@ -1,0 +1,31 @@
+<div class="modal fade" id="positionModal" tabindex="-1" aria-labelledby="positionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="positionModalLabel">Editar Posición</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <input type="hidden" [value]="position?.id" formControlName="id">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="position-name" class="col-form-label">Posición:</label>
+            <input type="text" class="form-control" id="position-name" [value]="position?.name" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="technology" class="col-form-label">Tecnología:</label>
+            <input type="text" class="form-control" id="technology"  [value]="position?.technology" formControlName="technology">
+          </div>
+          <div class="mb-3">
+            <label for="job-description" class="col-form-label">Job Description:</label>
+            <input type="file" class="form-control" id="job-description" formControlName="job">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-talentfy" data-bs-dismiss="modal">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

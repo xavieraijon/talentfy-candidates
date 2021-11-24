@@ -8,22 +8,21 @@ import { PositionsService } from 'src/app/services/positions.service';
   styleUrls: ['./positions-page.component.scss']
 })
 export class PositionsPageComponent implements OnInit {
-  positions: Position[] = []
+  positions: any[] = []
 
   constructor(private positionsService: PositionsService ) { }
 
   ngOnInit(): void {
     this.positionsService.getPositions().subscribe((data: any) =>{
       this.positions = this.groupByType(data['data'])
-      console.log(this.positions)
     })
 
   }
 
-  groupByType(array: any){
-    return array.reduce((r: any, a: Position) => {
-      r[a.category] = r[a.category] || [];
-      r[a.category].push(a);
+  groupByType(array: any) {
+    return array.reduce((r: any, pos: any) => {
+      r[pos.category] = r[pos.category] || [];
+      r[pos.category].push(pos);
       return r;
     }, Object.create(null));
   }

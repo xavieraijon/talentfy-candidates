@@ -1,21 +1,24 @@
-<div class="card mb-4">
+<div class="card mb-4 card-talentfy shadow">
   <div class="card-header card-header-talentfy">
-    Nuevos
+    {{ showCategoryTitle(position) }}
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Posición 1
+    <li class="list-group__item" *ngFor="let position of positions"
+      class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="list-group__item__title">{{ position.name }}</span>
       <div>
-        <span class="badge rounded-pill bg-talentfy">JavaScript</span>
-        &nbsp;
-        <span class="badge rounded-pill bg-success">5 candidatos</span>
-        &nbsp;
-        <button class="btn btn-sm btn-warning">
+        <span class="badge rounded-pill bg-talentfy--light">{{ position.technology }}</span>&nbsp;
+        <span class="badge rounded-pill bg-success">{{ position.candidates }} candidatos</span>&nbsp;
+        <button
+          *ngIf="position.category !== 3"
+          class="btn btn-outline-warning btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#positionModal"
+          (click)="sendToModal(position)"
+        >
           <fa-icon [icon]="faPencilAlt"></fa-icon>
         </button>
       </div>
     </li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
   </ul>
 </div>

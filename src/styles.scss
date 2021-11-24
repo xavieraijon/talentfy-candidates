@@ -10,23 +10,63 @@ $body-font: "Roboto", sans-serif;
 /** Common Styles **/
 body {
   font-family: $body-font;
+  background: url("assets/images/greek-vase.png") repeat;
 }
+
 .navbar a {
   color: white;
 }
 
 .bg-talentfy {
   background-color: $talentfy-color;
+
+  &--light {
+    background-color: lighten($talentfy-color, 25);
+  }
 }
 
 /** Components **/
 .navbar-talentfy {
   background-color: $talentfy-color;
+
+  .navbar-brand {
+    img {
+      height: 20px;
+      margin-right: 10px;
+    }
+    font-size: 1rem;
+  }
 }
 
-.card-header-talentfy {
-  background-color: $talentfy-complementary-color;
-  color: $talentfy-color;
-  font-weight: 800;
-  font-family: $heading-font;
+.card-talentfy {
+  border: 5px solid white;
+
+  .card-header-talentfy {
+    background-color: $talentfy-complementary-color;
+    border-bottom-width: 5px;
+    color: $talentfy-color;
+    font-weight: 800;
+    font-family: $heading-font;
+  }
+}
+
+.list-group {
+  &__item {
+    &__title {
+      font-family: $heading-font;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.btn-talentfy {
+  color: #fff;
+  background-color: $talentfy-color;
+  border-color: $talentfy-color;
+
+  &:hover {
+    color: #fff;
+    background-color: darken($talentfy-color, 5);
+    border-color: darken($talentfy-color, 10);
+  }
 }

@@ -1,26 +1,8 @@
 <app-navbar></app-navbar>
 <div class="container mt-4">
-<div class="card mb-4" *ngFor="let position of positions | keyvalue">
-  <div class="card-header card-header-talentfy">
-    {{ position.key }}
+  <div class="row">
+    <div class="col-12 col-md-6 col-xl-4" *ngFor="let position of positions | keyvalue">
+      <app-position-card [position]="position"></app-position-card>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let position of position.value" class="list-group-item d-flex justify-content-between align-items-center">
-      Posición {{position}}
-      <div>
-        <span class="badge rounded-pill bg-talentfy">{{position.technology}}</span>
-        &nbsp;
-        <span class="badge rounded-pill bg-success">{{position.candidates}} candidatos</span>
-        &nbsp;
-        <button class="btn btn-sm btn-warning">
-          Editar
-          <!-- <fa-icon [icon]="faPencilAlt"></fa-icon> -->
-        </button>
-      </div>
-    </li>
-  </ul>
-</div>
-  <!-- <app-position-card></app-position-card>
-  <app-position-card></app-position-card>
-  <app-position-card></app-position-card> -->
 </div>

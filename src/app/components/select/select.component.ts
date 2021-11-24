@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-select',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shareMsgService: ShareDataService) { }
 
   ngOnInit(): void {
+  }
+
+  getSelectData(event: any) {
+    this.sendToShareMsg(event.target.value)
+  }
+
+  sendToShareMsg(msg: string) {
+    this.shareMsgService.updateMessage(msg)
   }
 
 }

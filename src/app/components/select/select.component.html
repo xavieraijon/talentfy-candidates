@@ -1,6 +1,6 @@
-<select class="form-select" aria-label="Selector de criterio de ordenación">
-  <option selected>Ordenar por:</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
+<select class="form-select" aria-label="Selector de criterio de ordenación" (change)="getSelectData($event)">
+  <option value="id" selected>Ordenar por:</option>
+  <option value="name">Nombre</option>
+  <option value="technology">Tecnología</option>
+  <option value="candidates">Candidatos</option>
 </select>
