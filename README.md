@@ -41,7 +41,7 @@ npm install -g json-server
 
 **Puesta en marcha**
 
-Una vez instalado, si no lo estamos, accedemos directorio del proyecto y arrancamos **JSON Server** de la siguiente forma:
+Una vez instalado, si no lo estamos, accedemos al directorio del proyecto y arrancamos **JSON Server** de la siguiente forma:
 
 ```bash
 json-server --watch src/assets/data/db.json
@@ -56,8 +56,6 @@ Una vez arrancado **JSON Server**, ya podemos proceder a arrancar el servidor de
 ng serve
 ```
 > **IMPORTANTE:** Hay que iniciar Angular en un terminal nuevo, ya que deben correr ambos servicios a la vez.
-
--
 
 Para cualquier duda os podéis poner en contacto [conmigo](mailto:xavi.aijon@gmail.com).
 
