@@ -1,6 +1,6 @@
 # TalentFY Positions
 
-Ejercicio Front-End Angular para TalentFY.
+Prueba técnica de Front-End Developer en Angular para **TalentFY**.
 
 ![TalentFY Positions Screenshot](screenshot.jpg)
 
