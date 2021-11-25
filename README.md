@@ -6,6 +6,12 @@ Ejercicio Front-End Angular para TalentFY.
 
 # Instrucciones
 
+Instalar todas las dependencias del proyecto:
+
+```bash
+npm install
+```
+
 Se ha usado como servicio REST fake [json-server](https://github.com/typicode/json-server)
 
 Se debe instalar **json-server** para el correcto funcionamiento de la aplicaci√≥n.
@@ -16,7 +22,7 @@ Se debe instalar **json-server** para el correcto funcionamiento de la aplicaci√
 
 `npm install -g json-server`
 
-En el repositorio ya existe el archivo `db.json`, que es una copia del `positions.json` con el mismo formato.
+En la carpeta `assets/data` del repositorio ya existe el archivo `db.json`, que es una copia del `positions.json` con el mismo formato.
 
 Una vez instalado, accedemos a la ruta del proyecto y arrancamos el servidor JSON de la siguiente forma:
 
@@ -24,8 +30,12 @@ Una vez instalado, accedemos a la ruta del proyecto y arrancamos el servidor JSO
 json-server --watch src/assets/data/db.json
 ```
 
-Una vez arrancado el servidor JSON, ya podemos proceder a arrancar el servidor de desarrollo de Angular.
+Una vez arrancado el servidor JSON, ya podemos proceder a arrancar el servidor de desarrollo de Angular como siempre:
 
-## Development server
+```bash
+ng serve
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Gracias!
+
+Xavi
