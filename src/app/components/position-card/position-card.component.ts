@@ -3,6 +3,8 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { Position } from 'src/app/models/position';
 import { ShareDataService } from 'src/app/services/share-data.service';
+import { SharePositionService } from 'src/app/services/share-position.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -16,17 +18,18 @@ export class PositionCardComponent implements OnInit {
   subscription!: Subscription
   faPencilAlt = faPencilAlt
 
-  constructor(private shareMsgService: ShareDataService) { }
+  constructor(
+    private shareMsgService: ShareDataService,
+    private sharePosition: SharePositionService
+    ) { }
 
   ngOnInit(): void {
     this.positions = this.position.value
     this.subscription = this.shareMsgService.getMessage().subscribe(msg => {
-      this.positions = this.sortBy(msg)
+      this.positions = _.sortBy(this.positions, [o => {
+        return o[msg]
+      }])
     })
-  }
-
-  sortBy(prop: string) {
-    return this.position.value.sort((a: any, b: any) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
   }
 
   showCategoryTitle(prop: any) {
@@ -34,7 +37,7 @@ export class PositionCardComponent implements OnInit {
   }
 
   sendToModal(position: Position) {
-    this.shareMsgService.updateMessage(JSON.stringify(position))
+    this.sharePosition.updatePosition(position)
   }
 
   ngOnDestroy(){

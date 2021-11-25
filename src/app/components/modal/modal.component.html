@@ -6,7 +6,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <input type="hidden" [value]="position?.id" formControlName="id">
         <div class="modal-body">
           <div class="mb-3">
             <label for="position-name" class="col-form-label">Posición:</label>
@@ -18,7 +17,13 @@
           </div>
           <div class="mb-3">
             <label for="job-description" class="col-form-label">Job Description:</label>
-            <input type="file" class="form-control" id="job-description" formControlName="job">
+            <input
+            #pdf
+            type="file"
+            class="form-control"
+            id="job-description"
+            (change)="sendFile($event)">
+            <div *ngIf="position?.pdf !== null" class="file-name font-monospace"><fa-icon [icon]="faFilePdf"></fa-icon> {{ position?.pdf }}</div>
           </div>
         </div>
         <div class="modal-footer">

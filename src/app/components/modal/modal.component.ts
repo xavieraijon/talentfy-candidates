@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { Position } from 'src/app/models/position';
 import { PositionsService } from 'src/app/services/positions.service';
-import { ShareDataService } from 'src/app/services/share-data.service';
+import { SharePositionService } from 'src/app/services/share-position.service';
 
 @Component({
   selector: 'app-modal',
@@ -15,50 +16,55 @@ export class ModalComponent implements OnInit {
   position!: Position
   subscription!: Subscription
   form!: FormGroup
+  faFilePdf = faFilePdf
+  @ViewChild('pdf') pdf!: ElementRef
 
   constructor(
-    private shareMsgService: ShareDataService,
+    private sharePosition: SharePositionService,
     private positionsService: PositionsService,
-    public fb: FormBuilder) {
+    public fb: FormBuilder
+    ) {
     this.form = this.fb.group({
       id: [],
       name: [''],
       technology: [''],
-      job: [null]
+      category: [],
+      candidates: [],
+      pdf: [null]
     })
    }
 
   ngOnInit(): void {
-    this.subscription = this.shareMsgService.getMessage().subscribe(msg => {
-      if (this.tryParseJSONObject(msg)) {
-        this.position = JSON.parse(msg)
-        this.form.patchValue({
-          id: this.position.id,
-          name: this.position.name,
-          technology: this.position.technology,
-          job: this.position.pdf
-        })
-      }
+    this.subscription = this.sharePosition.getPosition().subscribe((position: Position) => {
+      this.position = position
+      this.form.patchValue({
+        id: position.id,
+        name: position.name,
+        technology: position.technology,
+        category: position.category,
+        candidates: position.candidates
+      })
     })
   }
 
+
   submitForm() {
-    this.positionsService.postPositions(this.form.value)
+    this.pdf.nativeElement.value = ''
+    this.subscription = this.positionsService.editPosition(this.form.value).subscribe(position => {
+      this.sharePosition.updatePosition(position)
+    })
   }
 
-  // Third Party method for check JSON object string
-  tryParseJSONObject (jsonString: string){
-    try {
-      var o = JSON.parse(jsonString);
-      if (o && typeof o === "object") {
-        return o;
-      }
-    }
-    catch (e) { }
 
-    return false;
-};
+  sendFile(event: any) {
+    const file = (event.target as HTMLInputElement).files![0]
+    this.form.patchValue({
+      pdf: file.name
+    })
+    this.form.get('job')?.updateValueAndValidity()
+  }
 
-
-
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
+  }
 }

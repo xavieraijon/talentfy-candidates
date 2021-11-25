@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Position } from 'src/app/models/position';
 import { PositionsService } from 'src/app/services/positions.service';
+import { SharePositionService } from 'src/app/services/share-position.service';
 
 @Component({
   selector: 'app-positions-page',
@@ -8,15 +9,31 @@ import { PositionsService } from 'src/app/services/positions.service';
   styleUrls: ['./positions-page.component.scss']
 })
 export class PositionsPageComponent implements OnInit {
-  positions: any[] = []
+  positionList: Position[] = []
 
-  constructor(private positionsService: PositionsService ) { }
 
-  ngOnInit(): void {
-    this.positionsService.getPositions().subscribe((data: any) =>{
-      this.positions = this.groupByType(data['data'])
+  constructor(
+    private positionsService: PositionsService,
+    private sharePosition: SharePositionService
+    ) { }
+
+  ngOnInit() {
+    this.loadPositionList()
+    this.handleSubscription()
+  }
+
+  loadPositionList(){
+    this.positionsService.getPositions().subscribe((positions) => {
+      this.positionList = this.groupByType(positions)
     })
+  }
 
+  handleSubscription() {
+    this.sharePosition.getPosition().subscribe(() => {
+      this.positionsService.getPositions().subscribe((positions) => {
+        this.positionList = this.groupByType(positions)
+      })
+    })
   }
 
   groupByType(array: any) {

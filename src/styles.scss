@@ -25,6 +25,16 @@ body {
   }
 }
 
+.file-name {
+  margin-top: 10px;
+  padding: 10px 16px 8px;
+  border: 1px solid $talentfy-color;
+  border-radius: 30px;
+  background-color: lighten($talentfy-color, 25);
+  font-size: 0.8rem;
+  color: white;
+}
+
 /** Components **/
 .navbar-talentfy {
   background-color: $talentfy-color;
@@ -55,6 +65,10 @@ body {
     &__title {
       font-family: $heading-font;
       text-transform: capitalize;
+
+      &--inactive {
+        color: #aaa;
+      }
     }
   }
 }
