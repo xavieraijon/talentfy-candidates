@@ -20,7 +20,9 @@ Se debe instalar **json-server** para el correcto funcionamiento de la aplicaci√
 
 **Instalaci√≥n**
 
-`npm install -g json-server`
+```bash
+npm install -g json-server
+```
 
 En la carpeta `assets/data` del repositorio ya existe el archivo `db.json`, que es una copia del `positions.json` con el mismo formato.
 
