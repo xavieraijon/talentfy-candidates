@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { Position } from 'src/app/models/position';
 import { ShareDataService } from 'src/app/services/share-data.service';
@@ -17,6 +18,7 @@ export class PositionCardComponent implements OnInit {
   positions: any[] = []
   subscription!: Subscription
   faPencilAlt = faPencilAlt
+  faFilePdf = faFilePdf
 
   constructor(
     private shareMsgService: ShareDataService,

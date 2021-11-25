@@ -76,9 +76,9 @@
       "id": 10,
       "name": "position 10",
       "technology": "PHP",
-      "category": 1,
       "candidates": 3,
-      "pdf": null
+      "pdf": null,
+      "category": 1
     },
     {
       "id": 11,

@@ -5,8 +5,11 @@
   <ul class="list-group list-group-flush">
     <li class="list-group__item" *ngFor="let position of positions"
       class="list-group-item d-flex justify-content-between align-items-center">
-      <span class="list-group__item__title" [ngClass]="{'list-group__item__title--inactive': position.category === 3}">{{ position.name }}</span>
+      <span class="list-group__item__title" [ngClass]="{'text-muted': position.category === 3}">
+        {{ position.name }}
+      </span>
       <div>
+        <fa-icon *ngIf="position.pdf !== null " [icon]="faFilePdf" class="text-danger" title="{{ position.pdf }}"></fa-icon>&nbsp;
         <span class="badge rounded-pill bg-talentfy--light">{{ position.technology }}</span>&nbsp;
         <span class="badge rounded-pill bg-success">{{ position.candidates }} candidatos</span>&nbsp;
         <button
